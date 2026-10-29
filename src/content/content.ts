@@ -26,6 +26,7 @@ import {
   Wind,
   type LucideIcon,
 } from "lucide-react";
+import type { PhotoKey } from "./photos";
 
 export type Item = { title: string; body: string; icon: LucideIcon };
 
@@ -60,7 +61,7 @@ export const values: Item[] = [
   },
 ];
 
-export type Service = Item & { id: string; tone: "dawn" | "day" | "dusk"; note?: string };
+export type Service = Item & { id: string; photo: PhotoKey; note?: string };
 
 export const services: Service[] = [
   {
@@ -68,14 +69,14 @@ export const services: Service[] = [
     title: "Healthcare awareness & education",
     body: "Preventive health awareness, community health education, lifestyle-related health topics, practical information on healthy habits, and sessions led by qualified healthcare professionals.",
     icon: Stethoscope,
-    tone: "day",
+    photo: "serviceHealth",
   },
   {
     id: "yoga-mindfulness",
     title: "Yoga, mindfulness & inner balance",
     body: "Yoga and mindful movement, breathing awareness, relaxation, guided meditation, and group sessions designed to support awareness and everyday balance.",
     icon: Wind,
-    tone: "dawn",
+    photo: "serviceYoga",
   },
   {
     id: "lifestyle-nutrition",
@@ -83,28 +84,28 @@ export const services: Service[] = [
     body: "Educational sessions on healthy eating, daily routines, sleep and rest, self-care, stress awareness, and sustainable lifestyle habits.",
     note: "Individualised medical or dietary guidance should be provided only by appropriately qualified professionals.",
     icon: Sprout,
-    tone: "day",
+    photo: "serviceNutrition",
   },
   {
     id: "traditional-wisdom",
     title: "Traditional wisdom & integrative wellbeing",
     body: "Educational dialogue on traditional health systems, self-care traditions, yoga-based wellbeing, and complementary approaches, with respect for their appropriate applications and limitations.",
     icon: Leaf,
-    tone: "dusk",
+    photo: "serviceTraditional",
   },
   {
     id: "community-wellbeing",
     title: "Community & collective wellbeing",
     body: "Community health awareness, educational institution sessions, workplace wellbeing activities, group learning, and programmes shaped around local needs.",
     icon: UsersRound,
-    tone: "dawn",
+    photo: "serviceCommunity",
   },
   {
     id: "collaborative-programmes",
     title: "Collaborative programmes",
     body: "Workshops, educational events, knowledge-sharing sessions, and tailored initiatives developed with healthcare professionals, practitioners, institutions, and community partners.",
     icon: Network,
-    tone: "dusk",
+    photo: "serviceCollab",
   },
 ];
 

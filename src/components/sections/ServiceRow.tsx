@@ -1,12 +1,14 @@
+import Image from "next/image";
 import type { Service } from "@/content/content";
+import { photos, type Photo } from "@/content/photos";
 import { Reveal } from "@/components/ui/Reveal";
-import { Landscape } from "@/components/illustrations/Landscape";
 
 /** One focus area on the Services page; alternates sides on large screens. */
 export function ServiceRow({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon;
   const flipped = index % 2 === 1;
   const titleId = `${service.id}-title`;
+  const photo: Photo = photos[service.photo];
 
   return (
     <li
@@ -20,7 +22,15 @@ export function ServiceRow({ service, index }: { service: Service; index: number
           flipped ? "md:order-2 md:col-start-8" : ""
         }`}
       >
-        <Landscape variant={service.tone} className="absolute inset-0 h-full w-full" />
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          sizes="(min-width: 768px) 40vw, 92vw"
+          placeholder="blur"
+          className="object-cover"
+          style={{ objectPosition: photo.position }}
+        />
         <span className="absolute bottom-5 left-5 inline-flex size-14 items-center justify-center rounded-full bg-ivory text-forest shadow-sm">
           <Icon aria-hidden="true" strokeWidth={1.4} className="size-6" />
         </span>

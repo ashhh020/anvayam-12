@@ -1,4 +1,5 @@
 import { values } from "@/content/content";
+import { photos } from "@/content/photos";
 import { pageMetadata } from "@/lib/metadata";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Container, Eyebrow, Heading, Section } from "@/components/ui/Layout";
@@ -29,7 +30,7 @@ export default function AboutPage() {
                 It begins with a simple question.
               </Heading>
               <div className="mt-12 hidden max-w-xs lg:block">
-                <ArchFrame variant="day" />
+                <ArchFrame image={photos.aboutTea} sizes="320px" />
               </div>
             </Reveal>
           </div>

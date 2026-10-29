@@ -1,4 +1,5 @@
 import { collaborators, pathways } from "@/content/content";
+import { photos } from "@/content/photos";
 import { pageMetadata } from "@/lib/metadata";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Container, Eyebrow, Heading, Section } from "@/components/ui/Layout";
@@ -99,7 +100,7 @@ export default function CollaboratePage() {
       <Section tone="ivory" labelledBy="approach-title" className="grain overflow-hidden">
         <Container className="grid items-center gap-16 lg:grid-cols-12">
           <div className="mx-auto w-full max-w-xs sm:max-w-sm lg:col-span-4 lg:max-w-none">
-            <ArchFrame variant="day" />
+            <ArchFrame image={photos.collabHills} sizes="(min-width: 1024px) 30vw, 80vw" />
           </div>
           <Reveal className="lg:col-span-7 lg:col-start-6">
             <Eyebrow>Our approach to partnership</Eyebrow>

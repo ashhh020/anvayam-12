@@ -275,7 +275,7 @@ export function ContactForm() {
           aria-invalid={Boolean(errors.category)}
           aria-describedby={describedBy("category")}
           onChange={() => revalidate("category")}
-          className={`${inputClasses(Boolean(errors.category))} cursor-pointer appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23244B3A'%20stroke-width='1.5'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E")] bg-[length:1.25rem] bg-[right_0.25rem_center] bg-no-repeat pr-10`}
+          className={`${inputClasses(Boolean(errors.category))} cursor-pointer appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23285E2A'%20stroke-width='1.5'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E")] bg-[length:1.25rem] bg-[right_0.25rem_center] bg-no-repeat pr-10`}
         >
           <option value="" disabled>
             Please choose…

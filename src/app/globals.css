@@ -4,13 +4,16 @@
   --color-ivory: #faf8f2;
   --color-sand: #f2ede1;
   --color-sand-deep: #e8e0cd;
-  --color-forest: #244b3a;
-  --color-forest-deep: #1a372a;
-  --color-sage: #a7b8a0;
-  --color-sage-light: #dbe3d5;
-  --color-terracotta: #b87557;
-  /* Darker terracotta for text on light backgrounds (WCAG AA). */
-  --color-terracotta-deep: #94553a;
+  --color-forest: #285e2a;
+  --color-forest-deep: #1b4220;
+  --color-sage: #b3d49a;
+  --color-sage-light: #e2efd6;
+  /* Palette drawn from the logo: leaf greens and the earthy brown figure.
+     "terracotta" names are kept for the brown accent to avoid churn. */
+  --color-leaf: #5c9a2c;
+  --color-terracotta: #a35f22;
+  /* Darker brown for text on light backgrounds (WCAG AA). */
+  --color-terracotta-deep: #8a4d19;
   --color-charcoal: #292d29;
   --color-muted: #5a605a;
 

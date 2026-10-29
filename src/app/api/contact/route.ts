@@ -55,7 +55,7 @@ function buildEmail(input: EnquiryInput) {
   ];
   const text = [...rows.map(([k, v]) => `${k}: ${v}`), "", "Message:", input.message].join("\n");
   const html = `<div style="font-family:system-ui,sans-serif;color:#292D29;line-height:1.5">
-<h2 style="font-family:Georgia,serif;color:#244B3A;font-weight:500">New website enquiry</h2>
+<h2 style="font-family:Georgia,serif;color:#285E2A;font-weight:500">New website enquiry</h2>
 <table cellpadding="6" style="border-collapse:collapse">${rows
     .map(([k, v]) => `<tr><td style="color:#5a605a;vertical-align:top">${k}</td><td>${escapeHtml(v)}</td></tr>`)
     .join("")}</table>

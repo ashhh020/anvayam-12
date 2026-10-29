@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Photo } from "@/content/photos";
 import { Reveal } from "@/components/ui/Reveal";
 import { Landscape } from "./Landscape";
 
@@ -6,9 +7,9 @@ import { Landscape } from "./Landscape";
  * An arch-shaped frame — a nod to traditional Indian architecture — that
  * holds either a photograph or the original landscape illustration.
  *
- * To use genuine photography, place a licensed image in /public/images and
- * pass `image={{ src: "/images/...", alt: "..." }}`. Only use images that
- * genuinely depict Anvayam activities when the context implies it.
+ * Photos come from `src/content/photos.ts`, which records each licence and
+ * credit. Only use images that genuinely depict Anvayam activities when the
+ * context implies it.
  */
 export function ArchFrame({
   variant = "dawn",
@@ -18,7 +19,7 @@ export function ArchFrame({
   sizes = "(min-width: 1024px) 40vw, 90vw",
 }: {
   variant?: "dawn" | "day" | "dusk";
-  image?: { src: string; alt: string };
+  image?: Photo;
   className?: string;
   priority?: boolean;
   sizes?: string;
@@ -40,7 +41,9 @@ export function ArchFrame({
             fill
             sizes={sizes}
             priority={priority}
+            placeholder="blur"
             className="object-cover"
+            style={image.position ? { objectPosition: image.position } : undefined}
           />
         ) : (
           <Landscape variant={variant} className="absolute inset-0 h-full w-full" />

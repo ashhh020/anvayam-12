@@ -2,13 +2,14 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { exploreLinks } from "@/content/content";
+import { photos } from "@/content/photos";
 import { pageMetadata } from "@/lib/metadata";
 import { ButtonLink } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Container, Eyebrow, Heading, Section } from "@/components/ui/Layout";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArchFrame } from "@/components/illustrations/ArchFrame";
-import { Landscape } from "@/components/illustrations/Landscape";
+import Image from "next/image";
 import { KolamDivider, PathwayLine, Sprig } from "@/components/illustrations/Motifs";
 
 export const metadata = {
@@ -60,9 +61,18 @@ export default function HomePage() {
           </div>
 
           <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:col-span-5 lg:max-w-none">
-            <ArchFrame variant="dawn" priority />
+            <ArchFrame image={photos.hero} priority sizes="(min-width: 1024px) 38vw, 90vw" />
             <div className="absolute -bottom-6 -left-4 hidden w-40 overflow-hidden rounded-t-full border-4 border-ivory shadow-[0_20px_50px_-20px_rgba(36,75,58,0.45)] sm:block lg:-left-12 lg:w-44">
-              <Landscape variant="day" className="aspect-[4/5] h-auto w-full" />
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src={photos.heroMist.src}
+                  alt={photos.heroMist.alt}
+                  fill
+                  sizes="176px"
+                  placeholder="blur"
+                  className="object-cover"
+                />
+              </div>
             </div>
             <Sprig className="absolute -top-4 -right-2 h-36 text-forest/40 sm:-right-8 lg:h-44" />
           </div>
@@ -101,7 +111,7 @@ export default function HomePage() {
       <Section tone="ivory" labelledBy="intro-title" className="grain overflow-hidden">
         <Container className="grid items-center gap-16 lg:grid-cols-12">
           <div className="relative order-2 mx-auto w-full max-w-sm sm:max-w-md lg:order-1 lg:col-span-5 lg:max-w-none">
-            <ArchFrame variant="dusk" />
+            <ArchFrame image={photos.introCommunity} />
           </div>
           <div className="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
             <Reveal>

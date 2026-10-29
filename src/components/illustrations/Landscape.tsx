@@ -10,9 +10,9 @@ const palettes: Record<
   Variant,
   { sky: string; sun: string; far: string; mid: string; near: string; sunX: number; sunY: number }
 > = {
-  dawn: { sky: "#F2E7D7", sun: "#B87557", far: "#DBE3D5", mid: "#A7B8A0", near: "#244B3A", sunX: 262, sunY: 196 },
-  day: { sky: "#E9EDE2", sun: "#D6A487", far: "#CFDACA", mid: "#94A98D", near: "#2B5543", sunX: 118, sunY: 150 },
-  dusk: { sky: "#EBDCCB", sun: "#A9654A", far: "#D3D6C3", mid: "#8FA488", near: "#1A372A", sunX: 300, sunY: 236 },
+  dawn: { sky: "#F3EBDB", sun: "#A35F22", far: "#E2EFD6", mid: "#A3C98A", near: "#285E2A", sunX: 262, sunY: 196 },
+  day: { sky: "#EAF1DF", sun: "#D49A5E", far: "#CFE3BF", mid: "#8DB86E", near: "#33702F", sunX: 118, sunY: 150 },
+  dusk: { sky: "#EBDCCB", sun: "#8F501A", far: "#D6E0C1", mid: "#7FA862", near: "#1B4220", sunX: 300, sunY: 236 },
 };
 
 export function Landscape({
@@ -81,12 +81,12 @@ export function Landscape({
       ].map(([cx, cy]) => (
         <g key={`${cx}-${cy}`}>
           <circle cx={cx} cy={cy} r="7" fill="#FAF8F2" fillOpacity="0.35" />
-          <circle cx={cx} cy={cy} r="3.4" fill="#FAF8F2" stroke="#B87557" strokeWidth="1.4" />
+          <circle cx={cx} cy={cy} r="3.4" fill="#FAF8F2" stroke="#A35F22" strokeWidth="1.4" />
         </g>
       ))}
 
       {/* Foreground grasses */}
-      <g stroke="#A7B8A0" strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.75">
+      <g stroke="#A3C98A" strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.75">
         <path d="M34 500 Q 38 468 30 440" />
         <path d="M44 500 Q 46 474 56 452" />
         <path d="M24 500 Q 20 478 10 462" />

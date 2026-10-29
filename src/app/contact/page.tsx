@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Suspense } from "react";
+import logo from "../../../public/brand/logo-full.png";
 import { Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -81,8 +83,13 @@ export default function ContactPage() {
               can become a more natural, accessible, and compassionate part of everyday life.
             </p>
             <KolamDivider className="mt-12" />
-            <h2 id="closing-title" className="mt-10 font-serif text-4xl tracking-[0.08em] text-forest uppercase sm:text-5xl">
-              {siteConfig.name}
+            <h2 id="closing-title" className="mt-12">
+              <Image
+                src={logo}
+                alt={siteConfig.name}
+                sizes="(min-width: 640px) 320px, 240px"
+                className="mx-auto h-auto w-60 sm:w-80"
+              />
             </h2>
             <p className="mt-4 font-serif text-2xl text-charcoal/85 italic">{siteConfig.tagline}</p>
             <p className="mt-8 text-sm font-semibold tracking-[0.18em] text-terracotta-deep uppercase">

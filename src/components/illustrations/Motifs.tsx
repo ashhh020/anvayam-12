@@ -2,8 +2,8 @@
 
 /** Kolam-inspired divider: a single thread weaving between dots. */
 export function KolamDivider({ className = "", light = false }: { className?: string; light?: boolean }) {
-  const stroke = light ? "#A7B8A0" : "#B87557";
-  const dot = light ? "#FAF8F2" : "#244B3A";
+  const stroke = light ? "#A3C98A" : "#A35F22";
+  const dot = light ? "#FAF8F2" : "#285E2A";
   return (
     <svg viewBox="0 0 140 28" className={`h-7 w-36 ${className}`} aria-hidden="true" focusable="false">
       <path
@@ -58,14 +58,14 @@ export function PathwayLine({ className = "" }: { className?: string }) {
     >
       <path
         d="M-20 320 C 160 300 220 160 380 180 S 600 330 780 260 S 1020 80 1220 120"
-        stroke="#A7B8A0"
+        stroke="#A3C98A"
         strokeWidth="1.2"
         strokeDasharray="1 7"
         strokeLinecap="round"
       />
       <path
         d="M-20 344 C 170 330 240 196 400 214 S 620 360 800 292 S 1040 116 1220 150"
-        stroke="#A7B8A0"
+        stroke="#A3C98A"
         strokeOpacity="0.5"
         strokeWidth="1"
       />

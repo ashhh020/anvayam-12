@@ -91,11 +91,16 @@ export function Footer() {
           <p>
             © <CurrentYear /> {siteConfig.name}. All rights reserved.
           </p>
-          {privacyPolicyUrl && (
-            <Link href={privacyPolicyUrl} className="link-underline hover:text-ivory">
-              Privacy Policy
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/credits" className="link-underline hover:text-ivory">
+              Photo credits
             </Link>
-          )}
+            {privacyPolicyUrl && (
+              <Link href={privacyPolicyUrl} className="link-underline hover:text-ivory">
+                Privacy Policy
+              </Link>
+            )}
+          </div>
         </div>
       </Container>
     </footer>
