@@ -1,0 +1,103 @@
+import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
+import { navigation, siteConfig } from "@/config/site";
+import { Container } from "@/components/ui/Layout";
+import { KolamDivider } from "@/components/illustrations/Motifs";
+import { CurrentYear } from "./CurrentYear";
+import { Wordmark } from "./Wordmark";
+
+export function Footer() {
+  const { contact, socials, privacyPolicyUrl } = siteConfig;
+
+  return (
+    <footer className="grain bg-forest-deep text-ivory">
+      <Container className="pt-20 pb-10">
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Wordmark light />
+            <p className="mt-6 font-serif text-2xl text-ivory/95 italic">{siteConfig.tagline}</p>
+            <p className="mt-5 max-w-md text-[0.95rem] leading-relaxed text-ivory/75">
+              {siteConfig.description}
+            </p>
+          </div>
+
+          <nav aria-label="Footer" className="lg:col-span-3 lg:col-start-7">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-sage">Explore</h2>
+            <ul className="mt-5 space-y-3">
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="link-underline text-ivory/85 hover:text-ivory">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="lg:col-span-3">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-sage">Connect</h2>
+            <ul className="mt-5 space-y-3">
+              <li>
+                <Link href="/contact" className="link-underline text-ivory/85 hover:text-ivory">
+                  Start a conversation
+                </Link>
+              </li>
+              {contact.email && (
+                <li>
+                  <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 text-ivory/85 hover:text-ivory">
+                    <Mail className="size-4 text-sage" aria-hidden="true" />
+                    <span className="link-underline">{contact.email}</span>
+                  </a>
+                </li>
+              )}
+              {contact.phone && (
+                <li>
+                  <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-2 text-ivory/85 hover:text-ivory">
+                    <Phone className="size-4 text-sage" aria-hidden="true" />
+                    <span className="link-underline">{contact.phone}</span>
+                  </a>
+                </li>
+              )}
+            </ul>
+            {socials.length > 0 && (
+              <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2" aria-label="Social media">
+                {socials.map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline text-sm text-ivory/85 hover:text-ivory"
+                    >
+                      {social.label}
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col items-center gap-3 border-t border-ivory/15 pt-10 text-center">
+          <KolamDivider light />
+          <p className="font-serif text-xl text-ivory/90">
+            {siteConfig.guidingThought}
+            <span className="text-ivory/60"> — {siteConfig.guidingThoughtMeaning}</span>
+          </p>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-3 text-sm text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © <CurrentYear /> {siteConfig.name}. All rights reserved.
+          </p>
+          {privacyPolicyUrl && (
+            <Link href={privacyPolicyUrl} className="link-underline hover:text-ivory">
+              Privacy Policy
+            </Link>
+          )}
+        </div>
+      </Container>
+    </footer>
+  );
+}
