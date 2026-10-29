@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #faf8f2;
-  --color-sand: #f2ede1;
-  --color-sand-deep: #e8e0cd;
-  --color-forest: #285e2a;
-  --color-forest-deep: #1b4220;
-  --color-sage: #b3d49a;
-  --color-sage-light: #e2efd6;
-  /* Palette drawn from the logo: leaf greens and the earthy brown figure.
-     "terracotta" names are kept for the brown accent to avoid churn. */
-  --color-leaf: #5c9a2c;
-  --color-terracotta: #a35f22;
-  /* Darker brown for text on light backgrounds (WCAG AA). */
-  --color-terracotta-deep: #8a4d19;
-  --color-charcoal: #292d29;
-  --color-muted: #5a605a;
+  /* Dark "sanctuary" palette (design-7): ink background, mist text, gold
+     accent, with the logo's leaf green as the secondary accent. */
+  --color-ink: #0a0d0a;
+  --color-ink-deep: #050705;
+  --color-panel: #121612;
+  --color-panel-soft: #171c17;
+  --color-mist: #e0e7e0;
+  --color-gold: #d4af37;
+  --color-gold-soft: #e2c35c;
+  --color-leaf: #7cbc4f;
+  --color-brown: #a35f22;
+  --color-alert: #f0937c;
 
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
@@ -25,7 +22,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -33,8 +30,9 @@ html {
 }
 
 body {
-  background: var(--color-ivory);
-  color: var(--color-charcoal);
+  background: var(--color-ink);
+  color: var(--color-mist);
+  font-weight: 300;
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -47,12 +45,12 @@ body {
 }
 
 ::selection {
-  background: var(--color-sage-light);
-  color: var(--color-forest-deep);
+  background: var(--color-gold);
+  color: #000;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-terracotta-deep);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
 
@@ -67,8 +65,8 @@ body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.18 0 0 0 0 0.16 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Scroll reveal — only animates when motion is welcome. */
@@ -86,11 +84,18 @@ body {
     transform: none;
   }
   .reveal-image {
-    clip-path: inset(8% 8% 0 8% round 999px 999px 0 0);
+    clip-path: inset(6% 6% 6% 6% round 1rem);
     transition: clip-path 1.4s var(--ease-gentle);
   }
   .reveal-image.is-visible {
-    clip-path: inset(0 0 0 0 round 999px 999px 0 0);
+    clip-path: inset(0 0 0 0 round 1rem);
+  }
+  .slide-up {
+    animation: slide-up 1s var(--ease-gentle) both;
+  }
+  @keyframes slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
   }
 }
 
@@ -114,5 +119,33 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fixed ambient backdrop from the design: radial vignette plus a soft
+   emerald glow. Decorative and non-interactive. */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 40, 20, 0.3), rgba(0, 0, 0, 1));
+}
+.ambient::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 40%;
+  height: 40%;
+  background: rgba(6, 78, 59, 0.2);
+  filter: blur(120px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ambient::before {
+    animation: glow 8s ease-in-out infinite;
+  }
+  @keyframes glow {
+    50% { opacity: 0.55; }
   }
 }

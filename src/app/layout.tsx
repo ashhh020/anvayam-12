@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#285E2A",
+  themeColor: "#0A0D0A",
 };
 
 export default function RootLayout({
@@ -69,14 +69,15 @@ export default function RootLayout({
         <noscript>
           <style>{`.reveal,.reveal-image{opacity:1!important;transform:none!important;clip-path:none!important}`}</style>
         </noscript>
+        <div className="ambient" aria-hidden="true" />
         <a
           href="#main"
-          className="sr-only z-[60] rounded-full bg-forest px-5 py-3 text-ivory focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+          className="sr-only z-[60] rounded-full bg-gold px-5 py-3 text-ink focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
         >
           Skip to content
         </a>
         <Header />
-        <main id="main" className="flex-1">
+        <main id="main" className="relative flex-1">
           {children}
         </main>
         <Footer />

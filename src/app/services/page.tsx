@@ -29,14 +29,14 @@ export default function ServicesPage() {
       {/* Focus areas */}
       <Section tone="white" labelledBy="areas-title" className="!pt-16 sm:!pt-20">
         <Container>
-          <Reveal className="flex flex-col gap-4 border-b border-forest/15 pb-10 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="flex flex-col gap-4 border-b border-white/10 pb-10 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <Eyebrow>Areas of focus</Eyebrow>
-              <Heading id="areas-title" className="mt-6 text-forest">
+              <Heading id="areas-title" className="mt-6 text-white">
                 Six areas we aim to develop.
               </Heading>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed text-charcoal/70">
+            <p className="max-w-sm text-sm leading-relaxed text-mist/55">
               These describe our direction rather than a list of current offerings.
             </p>
           </Reveal>
@@ -47,9 +47,9 @@ export default function ServicesPage() {
                 <li key={service.id}>
                   <a
                     href={`#${service.id}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-forest/20 px-4 py-2 text-sm text-forest transition-colors hover:border-forest hover:bg-forest/5"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:border-white/40 hover:bg-white/5"
                   >
-                    <span className="text-terracotta-deep">{index + 1}.</span>
+                    <span className="text-gold">{index + 1}.</span>
                     {service.title}
                   </a>
                 </li>
@@ -70,11 +70,11 @@ export default function ServicesPage() {
         <Container>
           <Reveal className="max-w-2xl">
             <Eyebrow>Where we may connect</Eyebrow>
-            <Heading id="settings-title" className="mt-6 text-forest">
+            <Heading id="settings-title" className="mt-6 text-white">
               Meeting people in the places they already gather.
             </Heading>
           </Reveal>
-          <ul className="mt-14 grid gap-px overflow-hidden border border-forest/15 bg-forest/15 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="mt-14 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
             {settings.map((setting, index) => {
               const Icon = setting.icon;
               return (
@@ -82,10 +82,10 @@ export default function ServicesPage() {
                   as="li"
                   key={setting.title}
                   delay={index * 70}
-                  className="flex min-h-52 flex-col justify-between gap-8 bg-sand p-7 lg:min-h-64"
+                  className="flex min-h-52 flex-col justify-between gap-8 bg-panel p-7 lg:min-h-64"
                 >
-                  <Icon aria-hidden="true" strokeWidth={1.25} className="size-9 text-forest" />
-                  <p className="font-serif text-2xl leading-tight text-forest">{setting.title}</p>
+                  <Icon aria-hidden="true" strokeWidth={1.25} className="size-9 text-white" />
+                  <p className="font-sans font-semibold tracking-tight text-2xl leading-tight text-white">{setting.title}</p>
                 </Reveal>
               );
             })}
@@ -99,14 +99,14 @@ export default function ServicesPage() {
           <Reveal>
             <aside
               aria-labelledby="note-title"
-              className="mx-auto flex max-w-4xl flex-col gap-6 border-l-2 border-terracotta bg-white p-8 sm:flex-row sm:p-10"
+              className="mx-auto flex max-w-4xl flex-col gap-6 border-l-2 border-gold bg-panel p-8 sm:flex-row sm:p-10"
             >
-              <Info aria-hidden="true" strokeWidth={1.5} className="size-7 shrink-0 text-terracotta-deep" />
+              <Info aria-hidden="true" strokeWidth={1.5} className="size-7 shrink-0 text-gold" />
               <div>
-                <h2 id="note-title" className="font-serif text-3xl text-forest">
+                <h2 id="note-title" className="font-sans font-semibold tracking-tight text-3xl text-white">
                   Important note
                 </h2>
-                <p className="mt-4 text-lg leading-relaxed text-pretty text-charcoal/85">
+                <p className="mt-4 text-lg leading-relaxed text-pretty text-mist/75">
                   Wellbeing activities are intended to complement, not replace, appropriate medical
                   assessment or treatment. The nature of each programme will be determined by its
                   purpose, setting, participant needs, safety considerations, and the expertise of

@@ -21,7 +21,7 @@ export default function CollaboratePage() {
         eyebrow="Collaborate & Grow"
         title={
           <>
-            Let’s connect. <span className="text-terracotta-deep">Let’s collaborate.</span> Let’s grow
+            Let’s connect. <span className="text-gold">Let’s collaborate.</span> Let’s grow
             together.
           </>
         }
@@ -38,7 +38,7 @@ export default function CollaboratePage() {
         <Container>
           <Reveal className="max-w-2xl">
             <Eyebrow>Who can collaborate?</Eyebrow>
-            <Heading id="who-title" className="mt-6 text-forest">
+            <Heading id="who-title" className="mt-6 text-white">
               People and organisations who share the journey.
             </Heading>
           </Reveal>
@@ -50,13 +50,13 @@ export default function CollaboratePage() {
                   as="li"
                   key={item.title}
                   delay={(index % 3) * 80}
-                  className="border-t border-forest/15 py-9"
+                  className="border-t border-white/10 py-9"
                 >
-                  <Icon aria-hidden="true" strokeWidth={1.25} className="size-8 text-terracotta-deep" />
-                  <h3 className="mt-6 font-serif text-2xl leading-tight text-forest sm:text-[1.75rem]">
+                  <Icon aria-hidden="true" strokeWidth={1.25} className="size-8 text-gold" />
+                  <h3 className="mt-6 font-sans font-semibold tracking-tight text-2xl leading-tight text-white sm:text-[1.75rem]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-charcoal/75">{item.body}</p>
+                  <p className="mt-3 leading-relaxed text-mist/60">{item.body}</p>
                 </Reveal>
               );
             })}
@@ -69,11 +69,11 @@ export default function CollaboratePage() {
         <Container>
           <Reveal className="max-w-2xl">
             <Eyebrow light>Ways to work together</Eyebrow>
-            <h2 id="ways-title" className="mt-6 font-serif text-4xl leading-[1.08] font-medium text-balance sm:text-5xl">
+            <h2 id="ways-title" className="mt-6 font-sans font-semibold tracking-tight text-4xl leading-[1.08] text-balance sm:text-5xl">
               Five pathways for collaboration.
             </h2>
           </Reveal>
-          <ol className="mt-14 grid gap-px overflow-hidden border border-ivory/15 bg-ivory/15 sm:grid-cols-2 lg:grid-cols-5">
+          <ol className="mt-14 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
             {pathways.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -81,14 +81,14 @@ export default function CollaboratePage() {
                   as="li"
                   key={item.title}
                   delay={index * 70}
-                  className="flex flex-col gap-6 bg-forest p-7 lg:min-h-80"
+                  className="flex flex-col gap-6 bg-ink-deep p-7 lg:min-h-80"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-serif text-lg text-sage">{String(index + 1).padStart(2, "0")}</span>
-                    <Icon aria-hidden="true" strokeWidth={1.25} className="size-6 text-sage" />
+                    <span className="text-xs font-medium tracking-[0.3em] text-leaf">{String(index + 1).padStart(2, "0")}</span>
+                    <Icon aria-hidden="true" strokeWidth={1.25} className="size-6 text-leaf" />
                   </div>
-                  <h3 className="mt-auto font-serif text-2xl leading-tight">{item.title}</h3>
-                  <p className="leading-relaxed text-ivory/75">{item.body}</p>
+                  <h3 className="mt-auto font-sans font-semibold tracking-tight text-2xl leading-tight">{item.title}</h3>
+                  <p className="leading-relaxed text-mist/65">{item.body}</p>
                 </Reveal>
               );
             })}
@@ -100,14 +100,14 @@ export default function CollaboratePage() {
       <Section tone="ivory" labelledBy="approach-title" className="grain overflow-hidden">
         <Container className="grid items-center gap-16 lg:grid-cols-12">
           <div className="mx-auto w-full max-w-xs sm:max-w-sm lg:col-span-4 lg:max-w-none">
-            <ArchFrame image={photos.collabHills} sizes="(min-width: 1024px) 30vw, 80vw" />
+            <ArchFrame image={photos.collabLeaf} sizes="(min-width: 1024px) 30vw, 80vw" />
           </div>
           <Reveal className="lg:col-span-7 lg:col-start-6">
             <Eyebrow>Our approach to partnership</Eyebrow>
-            <Heading id="approach-title" className="mt-6 text-forest">
+            <Heading id="approach-title" className="mt-6 text-white">
               Trust, mutual respect, transparency, safety, and shared responsibility.
             </Heading>
-            <p className="mt-8 text-lg leading-relaxed text-pretty text-charcoal/80">
+            <p className="mt-8 text-lg leading-relaxed text-pretty text-mist/70">
               We value trust, mutual respect, transparency, safety, and shared responsibility. Each
               collaboration will be explored individually and may depend on suitability, qualified
               personnel, available resources, and mutual agreement.

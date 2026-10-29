@@ -26,14 +26,7 @@ export function ArchFrame({
 }) {
   return (
     <div className={`relative ${className}`}>
-      <div
-        aria-hidden="true"
-        className="absolute -inset-3 rounded-t-full border border-terracotta/40 sm:-inset-4"
-      />
-      <Reveal
-        variant="image"
-        className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-sand"
-      >
+      <Reveal variant="image" className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-panel">
         {image ? (
           <Image
             src={image.src}
@@ -42,7 +35,7 @@ export function ArchFrame({
             sizes={sizes}
             priority={priority}
             placeholder="blur"
-            className="object-cover"
+            className="object-cover opacity-80"
             style={image.position ? { objectPosition: image.position } : undefined}
           />
         ) : (

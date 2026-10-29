@@ -1,45 +1,63 @@
 import type { ReactNode } from "react";
+import { siteConfig } from "@/config/site";
 import { Container } from "./Layout";
-import { ButtonLink } from "./Button";
+import { CircleArrowLink } from "./Button";
 import { Reveal } from "./Reveal";
-import { KolamDivider, Sprig } from "@/components/illustrations/Motifs";
 
-/** Closing call-to-action band on a deep forest background. */
+/**
+ * Closing call to action in the design's style: an italic statement, a fine
+ * gold rule, then a small gold label and the link.
+ */
 export function CtaBand({
   id,
   title,
+  label = "Start a conversation",
   children,
   cta,
+  showContact = false,
 }: {
   id: string;
   title: ReactNode;
+  label?: string;
   children?: ReactNode;
   cta: { label: string; href: string };
+  /** Show the official email and phone beneath the label, as in the design. */
+  showContact?: boolean;
 }) {
+  const { email, phone } = siteConfig.contact;
   return (
     <section
       aria-labelledby={id}
-      className="grain relative overflow-hidden bg-forest py-24 text-ivory sm:py-28 lg:py-36"
+      className="relative bg-gradient-to-b from-transparent to-ink-deep py-32 text-center sm:py-40"
     >
-      <Sprig className="pointer-events-none absolute -bottom-6 -left-6 h-72 text-sage/25 sm:left-6 lg:h-96" />
-      <Sprig className="pointer-events-none absolute -top-10 -right-4 h-64 rotate-180 text-sage/20 sm:right-10 lg:h-80" />
-      <Container className="relative text-center">
-        <Reveal className="flex flex-col items-center">
-          <KolamDivider light />
+      <Container>
+        <Reveal className="mx-auto flex max-w-2xl flex-col items-center">
           <h2
             id={id}
-            className="mt-8 max-w-3xl font-serif text-4xl leading-[1.08] font-medium text-balance sm:text-5xl lg:text-6xl"
+            className="font-serif text-4xl leading-tight text-balance text-white italic sm:text-5xl"
           >
             {title}
           </h2>
-          {children && (
-            <div className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-ivory/80">
-              {children}
-            </div>
+          <div aria-hidden="true" className="my-12 h-px w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
+          <p className="mb-4 text-xs font-bold tracking-[0.3em] text-gold uppercase">{label}</p>
+          {children && <div className="max-w-xl text-lg leading-relaxed text-pretty text-mist/70">{children}</div>}
+          {showContact && (email || phone) && (
+            <p className="mt-8 flex flex-col items-center gap-2 text-xl text-white/80 sm:text-2xl">
+              {email && (
+                <a href={`mailto:${email}`} className="break-all transition-colors hover:text-gold">
+                  {email}
+                </a>
+              )}
+              {phone && (
+                <a href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-lg text-mist/60 transition-colors hover:text-gold">
+                  {phone}
+                </a>
+              )}
+            </p>
           )}
-          <ButtonLink href={cta.href} variant="light" arrow className="mt-10">
+          <CircleArrowLink href={cta.href} className="mt-10">
             {cta.label}
-          </ButtonLink>
+          </CircleArrowLink>
         </Reveal>
       </Container>
     </section>

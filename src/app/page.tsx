@@ -1,16 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { exploreLinks } from "@/content/content";
 import { photos } from "@/content/photos";
 import { pageMetadata } from "@/lib/metadata";
-import { ButtonLink } from "@/components/ui/Button";
+import { CircleArrowLink } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { Container, Eyebrow, Heading, Section } from "@/components/ui/Layout";
+import { Container, Eyebrow } from "@/components/ui/Layout";
 import { Reveal } from "@/components/ui/Reveal";
-import { ArchFrame } from "@/components/illustrations/ArchFrame";
-import Image from "next/image";
-import { KolamDivider, PathwayLine, Sprig } from "@/components/illustrations/Motifs";
 
 export const metadata = {
   ...pageMetadata({
@@ -25,166 +22,137 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section aria-labelledby="hero-title" className="grain relative overflow-hidden bg-ivory">
-        <PathwayLine className="pointer-events-none absolute inset-x-0 top-[55%] h-64 w-full opacity-80 lg:top-[48%] lg:h-96" />
-        <Container className="relative grid items-center gap-14 pt-10 pb-20 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pt-16 lg:pb-28">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>A travelling, collaborative wellbeing initiative</Eyebrow>
-            </Reveal>
-            <Reveal delay={80}>
-              <h1 id="hero-title" className="mt-7 text-forest">
-                <span className="block font-serif text-[3.1rem] leading-[0.95] font-medium tracking-[0.01em] sm:text-7xl lg:text-[5.6rem]">
-                  Anvayam
-                  <span className="block text-terracotta-deep">Vaidya Sala</span>
-                </span>
-                <span className="mt-6 block font-serif text-2xl font-normal text-charcoal/85 italic sm:text-3xl">
-                  {siteConfig.tagline}
-                </span>
-              </h1>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="mt-8 max-w-xl text-lg leading-relaxed text-pretty text-charcoal/80 sm:text-xl">
-                Bringing healthcare knowledge, traditional wisdom, yoga, and community wellbeing
-                together — wherever people gather.
-              </p>
-            </Reveal>
-            <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-              <ButtonLink href="#approach" arrow>
-                Explore Our Approach
-              </ButtonLink>
-              <ButtonLink href="/collaborate" variant="secondary">
-                Collaborate With Us
-              </ButtonLink>
-            </Reveal>
+      {/* Hero — full-screen, centred, after the design */}
+      <section
+        aria-labelledby="hero-title"
+        className="relative flex min-h-svh flex-col items-center justify-center px-5 pt-32 pb-20 text-center"
+      >
+        <div className="mb-6 overflow-hidden">
+          <p className="slide-up text-[10px] tracking-[0.6em] text-gold uppercase sm:tracking-[1em]">
+            A travelling, collaborative wellbeing initiative
+          </p>
+        </div>
+        <h1 id="hero-title" className="mb-8 text-white">
+          <span className="block text-5xl leading-[0.9] font-bold tracking-tighter sm:text-7xl md:text-[110px] lg:text-[128px]">
+            ANVAYAM
+            <br />
+            VAIDYA SALA
+          </span>
+          <span className="mt-8 block font-serif text-2xl font-normal text-mist/80 italic sm:text-3xl">
+            {siteConfig.tagline}
+          </span>
+        </h1>
+        <div className="max-w-sm border-l border-white/20 pl-8 text-left">
+          <p className="mb-8 text-sm leading-relaxed text-mist/60">
+            Bringing healthcare knowledge, traditional wisdom, yoga, and community wellbeing together —
+            wherever people gather.
+          </p>
+          <div className="flex flex-col gap-5">
+            <CircleArrowLink href="#approach">Explore Our Approach</CircleArrowLink>
+            <Link
+              href="/collaborate"
+              className="text-[10px] tracking-[0.3em] text-mist/60 uppercase underline-offset-8 transition-colors hover:text-gold hover:underline"
+            >
+              Collaborate With Us
+            </Link>
           </div>
-
-          <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:col-span-5 lg:max-w-none">
-            <ArchFrame image={photos.hero} priority sizes="(min-width: 1024px) 38vw, 90vw" />
-            <div className="absolute -bottom-6 -left-4 hidden w-40 overflow-hidden rounded-t-full border-4 border-ivory shadow-[0_20px_50px_-20px_rgba(36,75,58,0.45)] sm:block lg:-left-12 lg:w-44">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={photos.heroMist.src}
-                  alt={photos.heroMist.alt}
-                  fill
-                  sizes="176px"
-                  placeholder="blur"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            <Sprig className="absolute -top-4 -right-2 h-36 text-forest/40 sm:-right-8 lg:h-44" />
-          </div>
-        </Container>
+        </div>
       </section>
 
       {/* Guiding thought */}
-      <section
-        id="approach"
-        aria-labelledby="guiding-title"
-        className="grain relative scroll-mt-24 overflow-hidden bg-forest py-24 text-ivory sm:py-28 lg:py-36"
-      >
-        <Container className="relative">
+      <section id="approach" aria-labelledby="guiding-title" className="relative scroll-mt-24 py-32 sm:py-40">
+        <Container>
           <Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <Eyebrow light>Our guiding thought</Eyebrow>
-            <p lang="sa" className="mt-10 font-devanagari text-2xl text-sage sm:text-3xl" aria-hidden="true">
+            <Eyebrow>Our guiding thought</Eyebrow>
+            <p lang="sa" aria-hidden="true" className="mt-12 font-devanagari text-2xl text-leaf sm:text-3xl">
               {siteConfig.guidingThoughtDevanagari}
             </p>
-            <h2 id="guiding-title" className="mt-4 font-serif text-5xl leading-none font-medium sm:text-7xl">
+            <h2 id="guiding-title" className="mt-5 text-5xl leading-none font-bold tracking-tighter text-white sm:text-7xl">
               {siteConfig.guidingThought}
             </h2>
-            <p className="mt-5 font-serif text-2xl text-ivory/85 italic sm:text-3xl">
+            <p className="mt-6 font-serif text-2xl text-mist/80 italic sm:text-3xl">
               {siteConfig.guidingThoughtMeaning}
             </p>
-            <KolamDivider light className="mt-10" />
-            <p className="mt-10 text-lg leading-relaxed text-pretty text-ivory/80 sm:text-xl">
-              We believe wellbeing is more than the absence of illness. It includes caring for the
-              body, nurturing mental clarity, building meaningful relationships, and connecting with
-              the world around us.
+            <div aria-hidden="true" className="my-12 h-px w-full max-w-md bg-gradient-to-r from-transparent via-gold to-transparent" />
+            <p className="text-lg leading-relaxed text-pretty text-mist/60">
+              We believe wellbeing is more than the absence of illness. It includes caring for the body,
+              nurturing mental clarity, building meaningful relationships, and connecting with the world
+              around us.
             </p>
           </Reveal>
         </Container>
       </section>
 
-      {/* Introducing Anvayam */}
-      <Section tone="ivory" labelledBy="intro-title" className="grain overflow-hidden">
-        <Container className="grid items-center gap-16 lg:grid-cols-12">
-          <div className="relative order-2 mx-auto w-full max-w-sm sm:max-w-md lg:order-1 lg:col-span-5 lg:max-w-none">
-            <ArchFrame image={photos.introCommunity} />
-          </div>
-          <div className="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
-            <Reveal>
-              <Eyebrow>Introducing Anvayam</Eyebrow>
-              <Heading id="intro-title" className="mt-6 text-forest">
-                Closer to the places where people live, learn, work, and gather.
-              </Heading>
+      {/* Introducing Anvayam + Explore — image with overlapping card, numbered list */}
+      <section aria-labelledby="intro-title" className="relative py-32 sm:py-40">
+        <Container className="grid items-center gap-16 md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-7">
+            <Reveal variant="image" className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src={photos.introLamp.src}
+                  alt={photos.introLamp.alt}
+                  fill
+                  sizes="(min-width: 768px) 55vw, 92vw"
+                  placeholder="blur"
+                  className="object-cover opacity-80"
+                  style={{ objectPosition: photos.introLamp.position }}
+                />
+              </div>
             </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-8 font-serif text-2xl leading-snug text-pretty text-charcoal sm:text-[1.7rem]">
-                <span className="float-left mt-1 mr-3 font-serif text-7xl leading-[0.8] text-terracotta-deep">
-                  A
-                </span>
-                nvayam Vaidya Sala is a travelling, collaborative wellbeing initiative that seeks to
-                bring health education and thoughtful wellbeing experiences closer to people in the
-                places where they live, learn, work, and gather.
+            <div className="relative z-10 -mt-12 ml-6 max-w-sm rounded-2xl border border-white/10 bg-panel p-8 md:-mt-24 md:-mr-10 md:ml-auto md:p-10">
+              <p className="mb-2 text-xs tracking-widest text-gold uppercase">Introducing Anvayam</p>
+              <p className="font-serif text-xl leading-snug text-white italic">
+                Closer to the places where people live, learn, work, and gather.
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-12 md:col-span-5">
+            <Reveal>
+              <h2 id="intro-title" className="text-4xl leading-[1.05] font-bold tracking-tighter text-white">
+                A travelling, <br />
+                <span className="text-leaf">collaborative</span> initiative
+              </h2>
+              <p className="mt-6 leading-relaxed text-pretty text-mist/60">
+                Anvayam Vaidya Sala is a travelling, collaborative wellbeing initiative that seeks to bring
+                health education and thoughtful wellbeing experiences closer to people in the places where
+                they live, learn, work, and gather.
               </p>
             </Reveal>
-            <Reveal delay={180} className="mt-10">
-              <ButtonLink href="/about" variant="secondary" arrow>
-                Our vision and values
-              </ButtonLink>
-            </Reveal>
+
+            <nav aria-labelledby="explore-title">
+              <h3 id="explore-title" className="mb-6 text-[10px] tracking-[0.6em] text-mist/50 uppercase">
+                Explore Anvayam
+              </h3>
+              <ul className="space-y-8">
+                {exploreLinks.map((item, index) => (
+                  <Reveal as="li" key={item.href} delay={index * 80}>
+                    <Link href={item.href} className="group block">
+                      <span className="mb-2 block text-xs text-gold">
+                        {String(index + 1).padStart(2, "0")} / {item.title.toUpperCase()}
+                      </span>
+                      <span className="block border-b border-white/10 pb-4 text-2xl text-white transition-colors duration-300 group-hover:border-gold">
+                        {item.body}
+                      </span>
+                    </Link>
+                  </Reveal>
+                ))}
+              </ul>
+            </nav>
           </div>
         </Container>
-      </Section>
-
-      {/* Explore Anvayam */}
-      <Section tone="sand" labelledBy="explore-title">
-        <Container>
-          <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <Eyebrow>Explore Anvayam</Eyebrow>
-              <Heading id="explore-title" className="mt-6 text-forest">
-                Four ways to begin.
-              </Heading>
-            </div>
-          </Reveal>
-          <ul className="mt-14 grid gap-px overflow-hidden border border-forest/15 bg-forest/15 sm:grid-cols-2 lg:grid-cols-4">
-            {exploreLinks.map((item, index) => (
-              <Reveal as="li" key={item.href} delay={index * 80} className="bg-sand">
-                <Link
-                  href={item.href}
-                  className="group flex h-full min-h-64 flex-col justify-between gap-10 p-8 transition-colors duration-500 hover:bg-ivory focus-visible:bg-ivory lg:min-h-80"
-                >
-                  <span className="flex items-start justify-between">
-                    <span className="font-serif text-lg text-terracotta-deep">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      className="size-5 text-forest/50 transition-[transform,color] duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-forest"
-                    />
-                  </span>
-                  <span>
-                    <span className="block font-serif text-3xl leading-tight text-forest">{item.title}</span>
-                    <span className="mt-3 block leading-relaxed text-charcoal/75">{item.body}</span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+      </section>
 
       <CtaBand
         id="home-cta"
         title="Wellbeing begins when we come together."
         cta={{ label: "Start a Conversation", href: "/contact" }}
+        showContact
       >
         <p>
-          Our programmes will be shaped by community needs, appropriate professional expertise, and
-          the partnerships available.
+          Our programmes will be shaped by community needs, appropriate professional expertise, and the
+          partnerships available.
         </p>
       </CtaBand>
     </>

@@ -27,22 +27,22 @@ export default function CreditsPage() {
           <h2 id="credits-title" className="sr-only">
             Photographs and licences
           </h2>
-          <ul className="divide-y divide-forest/15 border-y border-forest/15">
+          <ul className="divide-y divide-white/10 border-y border-white/10">
             {list.map((photo) => (
               <li key={photo.sourceUrl} className="grid gap-2 py-6 sm:grid-cols-12 sm:gap-8">
-                <p className="font-serif text-xl text-forest sm:col-span-6">
+                <p className="font-sans font-semibold tracking-tight text-xl text-white sm:col-span-6">
                   <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer" className="link-underline">
                     {photo.title}
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </p>
-                <p className="text-charcoal/80 sm:col-span-3">by {photo.author}</p>
+                <p className="text-mist/70 sm:col-span-3">by {photo.author}</p>
                 <p className="sm:col-span-3">
                   <a
                     href={photo.licenseUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-terracotta-deep underline underline-offset-4"
+                    className="text-gold underline underline-offset-4"
                   >
                     {photo.license}
                     <span className="sr-only"> (opens in a new tab)</span>
@@ -51,7 +51,7 @@ export default function CreditsPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-charcoal/70">
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-mist/55">
             Images have been resized and cropped for display. Photographs licensed under CC BY-SA
             remain available under the same licence. Logo © Anvayam Vaidya
             Sala.

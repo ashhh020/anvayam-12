@@ -3,11 +3,9 @@
  * All are from Wikimedia Commons and are illustrative only — none depicts an
  * Anvayam Vaidya Sala programme. Credits are listed on /credits.
  */
-import aboutTea from "../../public/images/about-tea.jpg";
-import collabHills from "../../public/images/collab-hills.jpg";
-import hero from "../../public/images/hero.jpg";
-import heroMist from "../../public/images/hero-mist.jpg";
-import introCommunity from "../../public/images/intro-community.jpg";
+import aboutBanyan from "../../public/images/about-banyan.jpg";
+import collabLeaf from "../../public/images/collab-leaf.jpg";
+import introLamp from "../../public/images/intro-lamp.jpg";
 import serviceCollab from "../../public/images/service-collab.jpg";
 import serviceCommunity from "../../public/images/service-community.jpg";
 import serviceHealth from "../../public/images/service-health.jpg";
@@ -28,104 +26,86 @@ export type Photo = {
   position?: string;
 };
 
-const BY2 = { license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/" };
-const BYSA2 = { license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/" };
-const BYSA3 = { license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/" };
+const CC0 = { license: "CC0 1.0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/" };
+const BYSA25 = { license: "CC BY-SA 2.5", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.5/" };
 const BYSA4 = { license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" };
 
 const commons = (file: string) => `https://commons.wikimedia.org/wiki/File:${file}`;
 
 export const photos = {
-  hero: {
-    src: hero,
-    alt: "Morning light over tea-covered hills and mountain ranges near Munnar, Kerala",
-    title: "Sunrise view over tea plantations and mountain ranges in Munnar",
-    author: "LiteraryDP",
+  introLamp: {
+    src: introLamp,
+    alt: "A single clay oil lamp glowing in the dark beside an earthen wall",
+    title: "Diwali Lamp village",
+    author: "Nilimajhapate",
     ...BYSA4,
-    sourceUrl: commons("Sunrise_view_over_tea_plantations_and_mountain_ranges_in_Munnar.jpg"),
-    position: "60% center",
-  },
-  heroMist: {
-    src: heroMist,
-    alt: "Misty hills and a valley at sunrise seen from Kolukkumalai, Kerala",
-    title: "Misty hills and valley reservoir at sunrise from Kolukkumalai, Kerala",
-    author: "Musheer1999",
-    ...BYSA4,
-    sourceUrl: commons("Misty_hills_and_valley_reservoir_at_sunrise_from_Kolukkumalai,_Kerala.jpg"),
-  },
-  introCommunity: {
-    src: introCommunity,
-    alt: "A group of women sitting together and smiling during a community gathering",
-    title: "India - Faces - Rural women driving their own change 1",
-    author: "McKay Savage",
-    ...BY2,
-    sourceUrl: commons("India_-_Faces_-_Rural_women_driving_their_own_change_1_(2229752965).jpg"),
+    sourceUrl: commons("Diwali_Lamp_village.jpg"),
     position: "70% center",
   },
-  aboutTea: {
-    src: aboutTea,
-    alt: "Tall trees standing among rows of tea bushes on a green hillside",
-    title: "Munnar Chithirapuram",
-    author: "Jinomunnar",
+  aboutBanyan: {
+    src: aboutBanyan,
+    alt: "The many interwoven aerial roots of a large banyan tree",
+    title: "Banyan tree 2024",
+    author: "Unnikannan7",
     ...BYSA4,
-    sourceUrl: commons("Munnar_Chithirapuram.jpg"),
+    sourceUrl: commons("Banyan_tree_2024.jpg"),
   },
-  collabHills: {
-    src: collabHills,
-    alt: "Layers of blue mountain ridges in morning mist in the Western Ghats",
-    title: "Sunrise over Agasthyakoodam Biological Park, Western Ghats",
-    author: "Planemad",
-    ...BYSA3,
-    sourceUrl: commons("Sunrise_over_Agasthyakoodam_Biological_Park,_Western_Ghats.jpg"),
+  collabLeaf: {
+    src: collabLeaf,
+    alt: "A young holy basil plant growing against a mossy stone wall",
+    title: "Ocimum tenuiflorum 5725",
+    author: "Vengolis",
+    ...BYSA4,
+    sourceUrl: commons("Ocimum_tenuiflorum_5725.jpg"),
   },
   serviceHealth: {
     src: serviceHealth,
-    alt: "A community health worker sharing an information leaflet with a woman and a young girl",
-    title: "A community health worker conducting a survey in the Korail slum, Bangladesh",
-    author: "DFID – UK Department for International Development",
-    ...BY2,
-    sourceUrl: commons("A_community_health_worker_conducting_a_survey_in_the_Korail_slum,_Bangladesh_(8630810827).jpg"),
+    alt: "A stethoscope resting on a keyboard beside a printed heart-rhythm strip",
+    title: "Instrumentos medicos de uso en Cardiología",
+    author: "Ivan2010",
+    ...BYSA4,
+    sourceUrl: commons("Instrumentos_medicos_de_uso_en_Cardiolog%C3%ADa.jpg"),
   },
   serviceYoga: {
     src: serviceYoga,
-    alt: "People practising yoga together on mats on a lawn under a wide sky",
-    title: "Yoga Day at Victoria",
-    author: "Ldas0973",
+    alt: "Silhouette of a person holding out an open palm towards the setting sun over hills",
+    title: "Yoga, not just an excercise",
+    author: "Akshiseo",
     ...BYSA4,
-    sourceUrl: commons("Yoga_Day_at_Victoria.jpg"),
-    position: "center 70%",
+    sourceUrl: commons("Yoga,_not_just_an_excercise.jpg"),
+    position: "40% center",
   },
   serviceNutrition: {
     src: serviceNutrition,
-    alt: "Fresh vegetables neatly arranged at a market stall",
-    title: "Gudalur fruit stand, India",
-    author: "Prof. Mohamed Shareef",
-    ...BYSA2,
-    sourceUrl: commons("Gudalur_fruit_stand,_India.jpg"),
+    alt: "A close view of pale millet grains",
+    title: "MILLET grains India",
+    author: "Nandhinikandhasamy",
+    ...BYSA4,
+    sourceUrl: commons("MILLET_grains_India.jpg"),
   },
   serviceTraditional: {
     src: serviceTraditional,
-    alt: "Tins of dried roots, seeds and herbs used in traditional preparations",
-    title: "Ayurvedic herbs 02",
-    author: "Vis M",
-    ...BYSA4,
-    sourceUrl: commons("Ayurvedic_herbs_02.jpg"),
+    alt: "Holy basil (tulsi) leaves and flower spikes against a dark green background",
+    title: "Thulasi2",
+    author: "Challiyan at Malayalam Wikipedia",
+    ...BYSA25,
+    sourceUrl: commons("Thulasi2.jpg"),
   },
   serviceCommunity: {
     src: serviceCommunity,
-    alt: "Women and children seated together in a large outdoor community group",
-    title: "India - Faces - Rural women driving their own change 2",
-    author: "McKay Savage",
-    ...BY2,
-    sourceUrl: commons("India_-_Faces_-_Rural_women_driving_their_own_change_2_(2229763779).jpg"),
+    alt: "Rows of small oil lamps glowing together",
+    title: "Diyas image",
+    author: "Harman015",
+    ...BYSA4,
+    sourceUrl: commons("Diyas_image.jpg"),
   },
   serviceCollab: {
     src: serviceCollab,
-    alt: "Cupped hands holding soil with a small green seedling",
-    title: "Life",
-    author: "~crystalina~",
-    ...BY2,
-    sourceUrl: commons("Life_-_Flickr_-_~crystalina~.jpg"),
+    alt: "Drops of dew resting on a dark green leaf",
+    title: "Dew on a dark green leaf",
+    author: "Dan Carlson",
+    ...CC0,
+    sourceUrl: commons("Dew_on_a_dark_green_leaf_(Unsplash).jpg"),
   },
 } satisfies Record<string, Photo>;
 

@@ -19,10 +19,10 @@ export function Container({
 type Tone = "ivory" | "sand" | "forest" | "white";
 
 const tones: Record<Tone, string> = {
-  ivory: "bg-ivory text-charcoal",
-  sand: "bg-sand text-charcoal",
-  forest: "bg-forest text-ivory",
-  white: "bg-white text-charcoal",
+  ivory: "text-mist",
+  sand: "bg-panel/60 text-mist",
+  forest: "bg-ink-deep text-mist",
+  white: "bg-ink-deep/60 text-mist",
 };
 
 export function Section({
@@ -42,7 +42,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={`relative py-20 sm:py-24 lg:py-32 ${tones[tone]} ${className}`}
+      className={`relative py-24 sm:py-32 lg:py-40 ${tones[tone]} ${className}`}
     >
       {children}
     </section>
@@ -66,13 +66,13 @@ export function Eyebrow({
   return (
     <Tag
       id={id}
-      className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] ${
-        light ? "text-sage" : "text-terracotta-deep"
+      className={`flex items-center gap-4 text-[10px] font-medium uppercase tracking-[0.6em] ${
+        light ? "text-leaf" : "text-gold"
       } ${className}`}
     >
       <span
         aria-hidden="true"
-        className={`h-px w-8 ${light ? "bg-sage/70" : "bg-terracotta"}`}
+        className={`h-px w-10 ${light ? "bg-leaf/60" : "bg-gold/70"}`}
       />
       {children}
     </Tag>
@@ -93,7 +93,7 @@ export function Heading({
   return (
     <Tag
       id={id}
-      className={`font-serif text-4xl leading-[1.08] font-medium tracking-[-0.01em] text-balance sm:text-5xl ${className}`}
+      className={`font-sans font-bold text-4xl leading-[1.05] tracking-tighter text-balance sm:text-5xl ${className}`}
     >
       {children}
     </Tag>

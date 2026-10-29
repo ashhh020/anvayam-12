@@ -18,9 +18,9 @@ export function PageIntro({
   return (
     <section
       aria-labelledby="page-title"
-      className="grain relative overflow-hidden bg-ivory pt-14 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-32"
+      className="relative overflow-hidden pt-40 pb-20 sm:pt-48 sm:pb-28 lg:pt-56 lg:pb-32"
     >
-      <PathwayLine className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full opacity-70 sm:h-56" />
+      <PathwayLine className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full opacity-25 sm:h-56" />
       <Container className="relative">
         <div className={`grid items-end gap-12 ${aside ? "lg:grid-cols-12" : ""}`}>
           <div className={aside ? "lg:col-span-7" : "max-w-4xl"}>
@@ -30,14 +30,14 @@ export function PageIntro({
             <Reveal delay={80}>
               <h1
                 id="page-title"
-                className="mt-6 font-serif text-[2.6rem] leading-[1.04] font-medium tracking-[-0.015em] text-balance text-forest sm:text-6xl lg:text-7xl"
+                className="mt-8 text-[2.6rem] leading-[0.98] font-bold tracking-tighter text-balance text-white sm:text-6xl lg:text-[5.5rem]"
               >
                 {title}
               </h1>
             </Reveal>
             {children && (
               <Reveal delay={160}>
-                <div className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-charcoal/80 sm:text-xl">
+                <div className="mt-10 max-w-xl border-l border-white/20 pl-8 text-base leading-relaxed text-pretty text-mist/60 sm:text-lg">
                   {children}
                 </div>
               </Reveal>

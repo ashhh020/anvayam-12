@@ -7,35 +7,25 @@ export function Emblem({ className = "", priority = false }: { className?: strin
   return <Image src={emblem} alt="" priority={priority} sizes="96px" className={className} />;
 }
 
-export function Wordmark({
-  light = false,
-  onClick,
-}: {
-  light?: boolean;
-  onClick?: () => void;
-}) {
+export function Wordmark({ onClick, size = "md" }: { onClick?: () => void; size?: "md" | "lg" }) {
   return (
     <Link
       href="/"
       onClick={onClick}
-      className={`group flex items-center gap-3 ${light ? "text-ivory" : "text-forest"}`}
+      className="group flex items-center gap-3 text-white"
       aria-label="Anvayam Vaidya Sala — home"
     >
-      {/* On dark backgrounds the green emblem sits on an ivory disc for contrast. */}
-      <span
-        className={`flex shrink-0 items-center justify-center transition-transform duration-500 group-hover:-translate-y-0.5 ${
-          light ? "size-14 rounded-full bg-ivory p-2" : "size-12"
+      <Emblem
+        priority
+        className={`h-auto shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5 ${
+          size === "lg" ? "w-16" : "w-11"
         }`}
-      >
-        <Emblem priority={!light} className="h-auto w-full" />
-      </span>
+      />
       <span className="flex flex-col leading-none">
-        <span className="font-serif text-[1.4rem] font-semibold tracking-[0.08em] uppercase">Anvayam</span>
-        <span
-          className={`mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.34em] ${
-            light ? "text-sage" : "text-forest/90"
-          }`}
-        >
+        <span className={`font-bold tracking-[0.4em] ${size === "lg" ? "text-2xl" : "text-lg sm:text-xl"}`}>
+          ANVAYAM
+        </span>
+        <span className="mt-1.5 text-[0.58rem] font-medium tracking-[0.5em] text-gold uppercase">
           Vaidya Sala
         </span>
       </span>

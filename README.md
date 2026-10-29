@@ -58,13 +58,13 @@ src/
 
 ## Configuration
 
-All configuration comes from environment variables. See `.env.example`. **No contact details, social accounts or addresses are hard-coded.** Anything left empty stays hidden.
+The official website (`www.anvayamvaidyasala.com`), email (`anvayamvaidyasala@gmail.com`) and phone (`+91 73493 57414`) supplied by Anvayam Vaidya Sala are the defaults in `src/config/site.ts`. They appear in the footer, the menu, the Contact page and the home page closing section. Environment variables can override them (see `.env.example`). Social links and the privacy policy come only from environment variables, and anything left empty stays hidden.
 
 | Variable | Exposed to browser? | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | yes | Production URL, used for canonical links, sitemap, robots and Open Graph. **Required in production.** |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | yes | Official public email, shown on the Contact page, in the footer and in form error messages |
-| `NEXT_PUBLIC_CONTACT_PHONE` | yes | Official public phone number (optional) |
+| `NEXT_PUBLIC_SITE_URL` | yes | Overrides the site URL used for canonical links, sitemap, robots and Open Graph (default `https://www.anvayamvaidyasala.com`). Set it on preview deployments |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | yes | Overrides the public email (default `anvayamvaidyasala@gmail.com`) |
+| `NEXT_PUBLIC_CONTACT_PHONE` | yes | Overrides the public phone number (default `+91 73493 57414`) |
 | `NEXT_PUBLIC_PRIVACY_POLICY_URL` | yes | Privacy policy URL or path. The footer link and the link in the form's privacy notice appear only when this is set |
 | `NEXT_PUBLIC_SOCIAL_INSTAGRAM` / `_FACEBOOK` / `_LINKEDIN` / `_YOUTUBE` / `_X` | yes | Social profile URLs. Each one appears only when set |
 | `RESEND_API_KEY` | **no (server only)** | Resend API key for delivering form enquiries |
@@ -104,17 +104,30 @@ The rate limit is kept in memory for each server instance. On serverless or mult
 
 ## Brand and imagery
 
+**Visual design.** The site follows the supplied `design-7.html` concept:
+
+- a near-black "sanctuary" background with a soft emerald glow
+- gold accents and the logo's leaf green
+- bold, tightly tracked sans headings, with italic serif for quotes
+- a minimal fixed header with a "Menu" toggle that opens a full-screen menu
+- circled-arrow links
+- an image with an overlapping card
+- gold-numbered lists
+
+The design's placeholder copy (for example "Ancient Alchemy", the "Healing Story" testimonial, named treatments and its sample email) was **not** used. The site keeps the approved content document's wording and the real contact details. Theme tokens live in `src/app/globals.css`.
+
 **Logo.** The official logo lives in `public/brand/`:
 
 - `logo-full.png` is the complete logo, with its black background removed so it sits on ivory.
 - `logo-emblem.png` is the tree-and-hands emblem on its own.
 
-The header and footer use the emblem with a text wordmark. The Contact page shows the full logo, and the favicon, Apple touch icon and Open Graph image use the emblem. The colour palette in `src/app/globals.css` comes from the logo: leaf greens and the earthy brown of the figure. The brown accent keeps the token name `terracotta`, so no class names needed to change.
+The header and footer use the emblem with a text wordmark. The Contact page shows the full logo, and the favicon, Apple touch icon and Open Graph image use the emblem. The logo sits directly on the dark background.
 
 **Photographs.** The photos come from Wikimedia Commons under CC BY or CC BY-SA licences. They are illustrative only and **do not depict Anvayam programmes**. Their alt text describes the scene, not an Anvayam activity.
 
 - Each photo's file, alt text, author, licence and source link is recorded in `src/content/photos.ts`.
 - The required attribution is shown on `/credits`, which is linked from the footer.
+- The set was chosen to suit the dark design: oil lamps, banyan roots, tulsi, a yoga silhouette at sunset, millet, a stethoscope and a dew-covered leaf.
 - Files are in `public/images/` (resized to 1800px, JPEG). `next/image` serves responsive AVIF/WebP with blur placeholders and lazy-loads them.
 
 To replace a photo:
@@ -153,12 +166,11 @@ For self-hosting: `npm ci && npm run build && npm start`, behind HTTPS. Make sur
 
 ## Before launch — information still required
 
-- [ ] **Official email address** → `NEXT_PUBLIC_CONTACT_EMAIL`
-- [ ] **Contact phone number** (optional) → `NEXT_PUBLIC_CONTACT_PHONE`
-- [ ] **Form delivery**: Resend account, verified sending domain, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, and a successful test enquiry
+- [x] **Official email, phone and website**: supplied and set as defaults
+- [ ] **Form delivery**: Resend account, verified sending domain (for example `anvayamvaidyasala.com`), `RESEND_API_KEY`, `CONTACT_TO_EMAIL` (for example `anvayamvaidyasala@gmail.com`), `CONTACT_FROM_EMAIL`, and a successful test enquiry
 - [ ] **Privacy policy**: write and publish one, covering what the form collects, why, how long it is kept and who to contact (consider India's DPDP Act 2023), then set `NEXT_PUBLIC_PRIVACY_POLICY_URL`. Also review the short notice in `ContactForm.tsx` so it matches the policy
 - [ ] **Social media links**: only accounts that will be maintained
-- [ ] **Production domain** → `NEXT_PUBLIC_SITE_URL`
+- [ ] **Domain**: point `www.anvayamvaidyasala.com` at the hosting provider and enable HTTPS
 - [ ] **Photography**: the current photos are licensed stock from Wikimedia Commons, credited on `/credits`. Replace them with genuine Anvayam images, taken with participants' consent, when available
 - [ ] **Logo source file**: the logo was extracted from a JPEG. A high-resolution transparent PNG or SVG from the designer would give sharper edges
 - [ ] Final proofread of all copy against the source content document

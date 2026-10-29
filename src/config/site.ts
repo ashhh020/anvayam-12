@@ -1,9 +1,10 @@
 /**
  * Central site configuration.
  *
- * Contact details, social links and the privacy policy URL are read from
- * environment variables so that nothing is hard-coded or invented. Anything
- * left unset is simply not rendered. See README.md → "Configuration".
+ * The official website, email and phone below were supplied by Anvayam Vaidya
+ * Sala. Each can be overridden with an environment variable. Social links and
+ * the privacy policy URL come only from environment variables; anything left
+ * unset is simply not rendered. See README.md → "Configuration".
  */
 
 const clean = (value: string | undefined) => {
@@ -11,9 +12,14 @@ const clean = (value: string | undefined) => {
   return trimmed ? trimmed : undefined;
 };
 
-const siteUrl = (
-  clean(process.env.NEXT_PUBLIC_SITE_URL) ?? "http://localhost:3000"
-).replace(/\/$/, "");
+/** Official details supplied by the organisation. */
+const official = {
+  url: "https://www.anvayamvaidyasala.com",
+  email: "anvayamvaidyasala@gmail.com",
+  phone: "+91 73493 57414",
+} as const;
+
+const siteUrl = (clean(process.env.NEXT_PUBLIC_SITE_URL) ?? official.url).replace(/\/$/, "");
 
 export type SocialLink = { label: string; href: string };
 
@@ -34,12 +40,12 @@ export const siteConfig = {
   description:
     "Anvayam Vaidya Sala is a travelling, collaborative wellbeing initiative that seeks to bring health education and thoughtful wellbeing experiences closer to people in the places where they live, learn, work, and gather.",
   url: siteUrl,
+  /** Website address as written for display, e.g. in the footer. */
+  displayUrl: siteUrl.replace(/^https?:\/\//, ""),
   locale: "en_IN",
   contact: {
-    /** Public email shown on the site. Unset → not displayed. */
-    email: clean(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
-    /** Public phone number shown on the site. Unset → not displayed. */
-    phone: clean(process.env.NEXT_PUBLIC_CONTACT_PHONE),
+    email: clean(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? official.email,
+    phone: clean(process.env.NEXT_PUBLIC_CONTACT_PHONE) ?? official.phone,
   },
   /** Full privacy policy URL or path. Unset → footer link hidden. */
   privacyPolicyUrl: clean(process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL),
