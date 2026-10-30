@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  /* Dark "sanctuary" palette (design-7): ink background, mist text, gold
+     accent, with the logo's leaf green as the secondary accent. */
+  --color-ink: #0a0d0a;
+  --color-ink-deep: #050705;
+  --color-panel: #121612;
+  --color-panel-soft: #171c17;
+  --color-mist: #e0e7e0;
+  --color-gold: #d4af37;
+  --color-gold-soft: #e2c35c;
+  --color-leaf: #7cbc4f;
+  --color-brown: #a35f22;
+  --color-alert: #f0937c;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+  --font-devanagari: var(--font-devanagari-serif), "Noto Serif Devanagari", serif;
+
+  --ease-gentle: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-mist);
+  font-weight: 300;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #000;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Subtle paper grain for warmth; purely decorative. */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll reveal — only animates when motion is welcome. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.9s var(--ease-gentle),
+      transform 0.9s var(--ease-gentle);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-image {
+    clip-path: inset(6% 6% 6% 6% round 1rem);
+    transition: clip-path 1.4s var(--ease-gentle);
+  }
+  .reveal-image.is-visible {
+    clip-path: inset(0 0 0 0 round 1rem);
+  }
+  .slide-up {
+    animation: slide-up 1s var(--ease-gentle) both;
+  }
+  @keyframes slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+}
+
+/* Animated underline for text links. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-gentle);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fixed ambient backdrop from the design: radial vignette plus a soft
+   emerald glow. Decorative and non-interactive. */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 40, 20, 0.3), rgba(0, 0, 0, 1));
+}
+.ambient::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 40%;
+  height: 40%;
+  background: rgba(6, 78, 59, 0.2);
+  filter: blur(120px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ambient::before {
+    animation: glow 8s ease-in-out infinite;
+  }
+  @keyframes glow {
+    50% { opacity: 0.55; }
+  }
+}
